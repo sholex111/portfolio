@@ -30,6 +30,13 @@ body{font-family:var(--sans);background:var(--slate);color:var(--text);
   padding:1rem 2.5rem;border-bottom:0.5px solid var(--border2);
   background:rgba(15,25,35,0.97);position:sticky;top:0;z-index:100;
   backdrop-filter:blur(12px);width:100%}
+.section {
+  padding: 3rem 0;
+  border-bottom: 0.5px solid var(--border2);
+
+  /* ✅ FIX — prevents content hiding under sticky nav */
+  scroll-margin-top: 80px;
+}  
 .nav-logo{font-family:var(--serif);font-size:17px;font-weight:700;
   color:var(--text);letter-spacing:-0.3px}
 .nav-logo span{color:var(--teal)}
