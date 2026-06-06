@@ -1,769 +1,90 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"/>
-<title>Dr Olusola Fajobi — Public Health Intelligence Leader</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
-<style>
-/* ── RESET & ROOT ─────────────────────────────────── */
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --slate:#0F1923;--slate2:#162130;--slate3:#1E2D3D;--slate4:#243447;
-  --teal:#00E5C3;--teal2:#00BFA5;--teal3:#00796B;--teal-glow:rgba(0,229,195,0.12);
-  --text:#E8F0F7;--text2:#8BA3B8;--text3:#556B80;
-  --border:rgba(0,229,195,0.15);--border2:rgba(255,255,255,0.06);
-  --rad:10px;--rad2:14px;
-  --serif:'Archivo Black',sans-serif;--sans:'Inter',sans-serif;
-}
-
-/* FIX 1 — html + body both get the dark background so no white edges appear */
-html{scroll-behavior:smooth;background:var(--slate);width:100%}
-body{font-family:var(--sans);background:var(--slate);color:var(--text);
-  min-height:100vh;width:100%;margin:0;padding:0}
-
-/* ── NAV ─────────────────────────────────────────── */
-.nav{display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2.5rem;border-bottom:0.5px solid var(--border2);
-  background:rgba(15,25,35,0.97);position:sticky;top:0;z-index:100;
-  backdrop-filter:blur(12px);width:100%}
-.section {
-  padding: 3rem 0;
-  border-bottom: 0.5px solid var(--border2);
-
-  /* ✅ FIX — prevents content hiding under sticky nav */
-  scroll-margin-top: 80px;
-}  
-.nav-logo{font-family:var(--serif);font-size:17px;font-weight:700;
-  color:var(--text);letter-spacing:-0.3px}
-.nav-logo span{color:var(--teal)}
-.nav-links{display:flex;gap:1.5rem}
-.nav-links a{font-size:12px;color:var(--text2);text-decoration:none;
-  cursor:pointer;transition:color 0.2s;letter-spacing:0.02em}
-.nav-links a:hover{color:var(--teal)}
-/* FIX 5 — burger button, hidden on desktop */
-.nav-burger{display:none;background:none;border:0.5px solid var(--border2);
-  color:var(--teal);font-size:20px;padding:4px 10px;border-radius:var(--rad);
-  cursor:pointer;line-height:1}
-
-/* ── HERO ─────────────────────────────────────────── */
-/* FIX 2 — hero is now full-width; inner content is constrained by hero-inner */
-.hero{width:100%;border-bottom:0.5px solid var(--border2);
-  background:linear-gradient(135deg,var(--slate) 55%,var(--slate2) 100%);
-  position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-80px;right:140px;
-  width:380px;height:380px;border-radius:50%;background:var(--teal-glow);
-  filter:blur(70px);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-60px;left:-60px;
-  width:260px;height:260px;border-radius:50%;
-  background:rgba(0,191,165,0.06);filter:blur(50px);pointer-events:none}
-/* FIX 2 cont — hero-inner acts as the layout grid, capped at 1100px */
-.hero-inner{max-width:1100px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 200px;
-  gap:3rem;align-items:center;padding:4rem 2.5rem 3rem;position:relative}
-.hero-ukphr{display:inline-flex;align-items:center;gap:6px;font-size:10px;
-  font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);
-  background:var(--teal-glow);border:0.5px solid rgba(0,229,195,0.3);
-  padding:5px 12px;border-radius:20px;margin-bottom:1.25rem}
-.hero-name{font-family:var(--serif);font-size:44px;line-height:1.05;
-  color:var(--text);font-weight:800;margin-bottom:0.4rem;letter-spacing:-0.8px}
-.hero-name span{color:var(--teal)}
-.hero-creds{font-size:12px;color:var(--text2);margin-bottom:1.25rem;
-  letter-spacing:0.06em;font-weight:500;text-transform:uppercase}
-.hero-tagline{font-size:15px;color:var(--text2);line-height:1.75;
-  max-width:480px;margin-bottom:2rem}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-primary{background:var(--teal);color:var(--slate);border:none;
-  padding:10px 22px;border-radius:var(--rad);font-family:var(--sans);
-  font-size:12px;font-weight:600;cursor:pointer;letter-spacing:0.03em;
-  transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
-.btn-primary:hover{background:#33EDD0;transform:translateY(-1px);
-  box-shadow:0 8px 20px rgba(0,229,195,0.2)}
-.btn-outline{background:transparent;color:var(--text);
-  border:0.5px solid rgba(255,255,255,0.18);padding:10px 22px;
-  border-radius:var(--rad);font-family:var(--sans);font-size:12px;
-  cursor:pointer;transition:all 0.2s;
-  display:inline-flex;align-items:center;gap:6px}
-.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
-.photo-wrap{width:185px;height:220px;border-radius:14px;overflow:hidden;
-  flex-shrink:0;border:2px solid rgba(0,229,195,0.35);
-  box-shadow:0 0 0 8px var(--teal-glow),0 24px 48px rgba(0,0,0,0.5)}
-.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
-
-/* ── WRAPPER ──────────────────────────────────────── */
-.wrapper{max-width:1100px;margin:0 auto;padding:0 2.5rem}
-
-/* ── SECTIONS ─────────────────────────────────────── */
-.section{padding:3rem 0;border-bottom:0.5px solid var(--border2)}
-.sec-label{font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.14em;color:var(--teal);margin-bottom:0.4rem}
-.sec-title{font-family:var(--serif);font-size:28px;font-weight:800;
-  color:var(--text);margin-bottom:0.3rem;letter-spacing:-0.4px}
-.sec-sub{font-size:13px;color:var(--text3);margin-bottom:2rem;line-height:1.6}
-
-/* ── STORY ────────────────────────────────────────── */
-.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.story-card{padding:1.5rem;border-radius:var(--rad2);
-  border:0.5px solid var(--border2);background:var(--slate2);
-  position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s}
-.story-card:hover{border-color:var(--border);transform:translateY(-2px)}
-.story-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.story-card.c1::after{background:linear-gradient(90deg,var(--teal),transparent)}
-.story-card.c2::after{background:linear-gradient(90deg,#F59E0B,transparent)}
-.story-card.c3::after{background:linear-gradient(90deg,#60A5FA,transparent)}
-.story-num{font-family:var(--serif);font-size:40px;font-weight:800;
-  color:rgba(0,229,195,0.1);margin-bottom:0.5rem;line-height:1}
-.story-heading{font-weight:600;font-size:13px;color:var(--text);
-  margin-bottom:0.6rem;font-family:var(--serif)}
-.story-body{font-size:12px;color:var(--text2);line-height:1.7}
-
-/* ── TIMELINE ─────────────────────────────────────── */
-.timeline{position:relative;padding-left:1.75rem}
-.timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;
-  width:1px;background:linear-gradient(to bottom,var(--teal),rgba(0,229,195,0.1))}
-.tl-item{position:relative;margin-bottom:1.25rem}
-.tl-dot{position:absolute;left:-1.75rem;top:20px;width:9px;height:9px;
-  border-radius:50%;background:var(--teal);border:2px solid var(--slate);
-  transform:translateX(-4px);box-shadow:0 0 10px var(--teal)}
-.tl-dot.inactive{background:var(--text3);box-shadow:none}
-.tl-header{display:flex;align-items:flex-start;justify-content:space-between;
-  padding:1rem 1.25rem;border-radius:var(--rad2);
-  border:0.5px solid var(--border2);background:var(--slate2);
-  transition:all 0.2s;cursor:pointer}
-.tl-header:hover{border-color:var(--border);background:var(--slate3)}
-.tl-header.active{border-color:rgba(0,229,195,0.4);background:var(--slate3)}
-.tl-role{font-weight:600;font-size:13px;color:var(--text);font-family:var(--serif)}
-.tl-org{font-size:11px;color:var(--teal);margin-top:3px;font-weight:500}
-.tl-date{font-size:11px;color:var(--text3);flex-shrink:0;
-  margin-left:1rem;padding-top:2px}
-.tl-expand{display:none;padding:1rem 1.25rem 1.25rem;
-  border:0.5px solid rgba(0,229,195,0.25);border-top:none;
-  border-radius:0 0 var(--rad2) var(--rad2);
-  background:var(--slate3);margin-top:-6px}
-.tl-expand.open{display:block}
-.tl-tools{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.8rem}
-.tool-tag{font-size:10px;padding:3px 9px;border-radius:20px;
-  background:var(--teal-glow);border:0.5px solid rgba(0,229,195,0.25);
-  color:var(--teal);font-weight:600}
-.tl-points{list-style:none}
-.tl-points li{font-size:12px;color:var(--text2);
-  padding:3px 0 3px 16px;position:relative;line-height:1.65}
-.tl-points li::before{content:'▸';position:absolute;left:0;
-  color:var(--teal);font-size:10px;top:5px}
-
-/* ── PROJECTS ─────────────────────────────────────── */
-.filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
-.filter-btn{font-size:11px;padding:5px 13px;border-radius:20px;cursor:pointer;
-  border:0.5px solid var(--border2);background:transparent;color:var(--text2);
-  font-family:var(--sans);transition:all 0.15s;letter-spacing:0.02em}
-.filter-btn.active{background:var(--teal);border-color:var(--teal);
-  color:var(--slate);font-weight:700}
-.filter-btn:hover:not(.active){border-color:var(--teal);color:var(--teal)}
-.projects-grid{display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
-.proj-card{border-radius:var(--rad2);border:0.5px solid var(--border2);
-  background:var(--slate2);padding:1.25rem;
-  transition:all 0.2s;display:flex;flex-direction:column}
-.proj-card:hover{border-color:var(--border);background:var(--slate3);
-  transform:translateY(-2px)}
-.proj-cat{font-size:9px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.1em;padding:3px 9px;border-radius:20px;
-  display:inline-block;margin-bottom:0.8rem;width:fit-content}
-.cat-phm{background:rgba(0,229,195,0.12);color:var(--teal);
-  border:0.5px solid rgba(0,229,195,0.25)}
-.cat-hi{background:rgba(245,158,11,0.12);color:#F59E0B;
-  border:0.5px solid rgba(245,158,11,0.25)}
-.cat-phi{background:rgba(96,165,250,0.12);color:#60A5FA;
-  border:0.5px solid rgba(96,165,250,0.25)}
-.cat-ml{background:rgba(167,139,250,0.12);color:#A78BFA;
-  border:0.5px solid rgba(167,139,250,0.25)}
-.cat-ar{background:rgba(52,211,153,0.12);color:#34D399;
-  border:0.5px solid rgba(52,211,153,0.25)}
-.cat-ph{background:rgba(251,113,133,0.12);color:#FB7185;
-  border:0.5px solid rgba(251,113,133,0.25)}
-.cat-de{background:rgba(251,191,36,0.12);color:#FBBF24;
-  border:0.5px solid rgba(251,191,36,0.25)}
-.proj-title{font-weight:700;font-size:13px;color:var(--text);
-  margin-bottom:0.5rem;line-height:1.4;font-family:var(--serif)}
-.proj-desc{font-size:12px;color:var(--text2);line-height:1.6;
-  flex:1;margin-bottom:0.75rem}
-.proj-tools{display:flex;flex-wrap:wrap;gap:4px}
-.proj-tool{font-size:10px;padding:2px 7px;border-radius:4px;
-  background:var(--slate4);color:var(--text3);border:0.5px solid var(--border2)}
-
-/* ── PUBLICATIONS ─────────────────────────────────── */
-.pub-achieve{display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0.75rem;margin-bottom:1.25rem}
-.pub-achieve-card{border-radius:var(--rad2);border:0.5px solid var(--border);
-  background:linear-gradient(135deg,var(--slate2),var(--slate3));
-  padding:1.25rem;text-align:center;position:relative;overflow:hidden}
-.pub-achieve-card::before{content:'';position:absolute;top:-20px;right:-20px;
-  width:70px;height:70px;border-radius:50%;background:var(--teal-glow)}
-.pub-ach-num{font-family:var(--serif);font-size:32px;font-weight:800;
-  color:var(--teal);line-height:1}
-.pub-ach-label{font-size:11px;color:var(--text2);margin-top:5px}
-.pub-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem}
-.pub-card{border-radius:var(--rad2);border:0.5px solid var(--border2);
-  background:var(--slate2);padding:1rem 1.25rem;transition:border-color 0.2s}
-.pub-card:hover{border-color:var(--border)}
-.pub-card-title{font-size:12px;font-weight:500;color:var(--text);
-  line-height:1.55;margin-bottom:6px}
-.pub-card-meta{font-size:11px;color:var(--text3)}
-.pub-card-journal{color:var(--teal2);font-style:italic}
-.pub-first-badge{display:inline-block;font-size:9px;font-weight:700;
-  text-transform:uppercase;letter-spacing:0.06em;
-  background:rgba(0,229,195,0.12);color:var(--teal);
-  padding:2px 7px;border-radius:20px;margin-left:6px;
-  border:0.5px solid rgba(0,229,195,0.2);vertical-align:middle}
-.ar-divider{display:flex;align-items:center;gap:0.75rem;margin:0.5rem 0 1rem}
-.ar-divider span{font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.1em;color:var(--teal)}
-.ar-divider hr{flex:1;border:none;border-top:0.5px solid var(--border2)}
-.ar-divider a{font-size:10px;color:var(--teal2);text-decoration:none}
-.ar-divider a:hover{color:var(--teal)}
-.pub-view-all{margin-top:0.75rem;text-align:center}
-.pub-view-all a{font-size:12px;color:var(--teal2);text-decoration:none;
-  border-bottom:0.5px solid rgba(0,191,165,0.3);padding-bottom:1px}
-.pub-view-all a:hover{color:var(--teal)}
-
-/* ── SKILLS ───────────────────────────────────────── */
-.skills-grid{display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem}
-.skill-pillar{padding:1.5rem;border-radius:var(--rad2);
-  border:0.5px solid var(--border2);background:var(--slate2);
-  transition:all 0.2s}
-.skill-pillar:hover{border-color:var(--border);transform:translateY(-2px)}
-.skill-icon{font-size:22px;color:var(--teal);margin-bottom:0.75rem;display:block}
-.skill-pillar-name{font-weight:700;font-size:12px;color:var(--text);
-  margin-bottom:0.75rem;font-family:var(--serif)}
-.skill-tags{display:flex;flex-wrap:wrap;gap:4px}
-.skill-tag{font-size:10px;padding:2px 8px;border-radius:4px;
-  background:var(--slate4);color:var(--text2);border:0.5px solid var(--border2)}
-
-/* ── EDUCATION ────────────────────────────────────── */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.col-label{font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.12em;color:var(--teal);margin-bottom:0.75rem}
-.edu-list{display:flex;flex-direction:column;gap:0.65rem}
-.edu-item{padding:0.8rem 1rem;border-radius:var(--rad);
-  border:0.5px solid var(--border2);background:var(--slate2);
-  display:flex;gap:0.75rem;align-items:flex-start;transition:border-color 0.2s}
-.edu-item:hover{border-color:var(--border)}
-.edu-year{font-size:11px;color:var(--teal);font-weight:700;
-  min-width:36px;padding-top:2px;font-family:var(--serif)}
-.edu-degree{font-size:12px;font-weight:600;color:var(--text)}
-.edu-inst{font-size:11px;color:var(--text3);margin-top:2px}
-.cert-list{display:flex;flex-direction:column;gap:0.5rem}
-.cert-item{padding:0.65rem 1rem;border-radius:var(--rad);
-  border:0.5px solid var(--border2);background:var(--slate2);
-  display:flex;align-items:center;gap:9px;
-  text-decoration:none;transition:border-color 0.2s}
-.cert-item:hover{border-color:var(--border)}
-.cert-name{font-size:11px;color:var(--text);line-height:1.4;font-weight:500}
-.cert-issuer{font-size:10px;color:var(--text3)}
-
-/* ── VISION ───────────────────────────────────────── */
-.vision-box{border-radius:var(--rad2);border:0.5px solid var(--border);
-  background:linear-gradient(135deg,var(--slate2),var(--slate3));
-  padding:2.5rem;position:relative;overflow:hidden}
-.vision-box::before{content:'';position:absolute;top:-50px;left:-50px;
-  width:200px;height:200px;border-radius:50%;
-  background:var(--teal-glow);pointer-events:none}
-.vision-mark{font-family:var(--serif);font-size:72px;color:var(--teal);
-  opacity:0.25;line-height:1;margin-bottom:-16px}
-.vision-quote{font-family:var(--serif);font-size:19px;color:var(--text);
-  line-height:1.65;margin-bottom:1.25rem;font-style:italic;font-weight:600}
-.vision-body{font-size:13px;color:var(--text2);line-height:1.8}
-
-/* ── CONTACT ──────────────────────────────────────── */
-.contact-grid{display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:0.75rem}
-.contact-link{display:flex;align-items:center;gap:10px;
-  padding:0.9rem 1.1rem;border-radius:var(--rad);
-  border:0.5px solid var(--border2);background:var(--slate2);
-  text-decoration:none;color:var(--text);font-size:13px;
-  font-weight:500;transition:all 0.2s}
-.contact-link:hover{border-color:var(--teal);color:var(--teal);
-  background:var(--slate3);transform:translateY(-1px)}
-.contact-link i{font-size:18px;color:var(--teal)}
-.contact-sub{font-size:10px;color:var(--text3);margin-top:1px;font-weight:400}
-
-/* ── FOOTER ───────────────────────────────────────── */
-footer{padding:1.75rem 2.5rem;text-align:center;font-size:11px;
-  color:var(--text3);border-top:0.5px solid var(--border2);
-  letter-spacing:0.04em}
-footer span{color:var(--teal)}
-
-/* ══════════════════════════════════════════════════
-   FIX 3 — RESPONSIVE BREAKPOINTS
-   768px  = tablet / large phone (landscape)
-   420px  = small phone (portrait)
-══════════════════════════════════════════════════ */
-@media(max-width:768px){
-  /* NAV */
-  .nav{padding:0.85rem 1.25rem}
-  .nav-links{display:none;flex-direction:column;position:absolute;
-    top:52px;left:0;right:0;background:var(--slate2);
-    padding:1rem 1.5rem;gap:1rem;border-bottom:0.5px solid var(--border2);z-index:99}
-  .nav-links.open{display:flex}
-  .nav-burger{display:block}
-
-  /* HERO */
-  .hero-inner{grid-template-columns:1fr;text-align:center;
-    padding:2.5rem 1.25rem 2rem;gap:1.5rem}
-  .hero-name{font-size:32px}
-  .hero-tagline{font-size:13px;margin-left:auto;margin-right:auto}
-  .hero-creds{font-size:11px}
-  .hero-ukphr{font-size:9px;margin-left:auto;margin-right:auto}
-  .hero-btns{justify-content:center}
-  .photo-wrap{margin:0 auto;width:150px;height:180px}
-
-  /* WRAPPER & SECTIONS */
-  .wrapper{padding:0 1.25rem}
-  .section{padding:2rem 0}
-  .sec-title{font-size:22px}
-
-  /* STORY */
-  .story-grid{grid-template-columns:1fr}
-
-  /* TIMELINE */
-  .tl-header{flex-direction:column;gap:4px}
-  .tl-date{margin-left:0}
-
-  /* PROJECTS */
-  .filter-bar{gap:5px}
-  .filter-btn{font-size:10px;padding:4px 10px}
-  .projects-grid{grid-template-columns:1fr}
-
-  /* PUBLICATIONS */
-  .pub-achieve{grid-template-columns:repeat(2,1fr)}
-  .pub-cards{grid-template-columns:1fr}
-
-  /* SKILLS */
-  .skills-grid{grid-template-columns:repeat(2,1fr)}
-
-  /* EDUCATION */
-  .edu-grid{grid-template-columns:1fr}
-
-  /* CONTACT */
-  .contact-grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:420px){
-  .hero-name{font-size:26px}
-  .hero-inner{padding:2rem 1rem}
-  .wrapper{padding:0 1rem}
-  .skills-grid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .pub-achieve{grid-template-columns:repeat(2,1fr)}
-  .filter-btn{font-size:9px;padding:3px 8px}
-  .nav-logo{font-size:14px}
-  .vision-quote{font-size:16px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr Olusola Fajobi | Public Health Intelligence Leader</title>
+  <meta name="description" content="Portfolio of Dr Olusola Fajobi, a public health intelligence leader bridging medicine, epidemiology, data engineering and AI-enabled population health." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="home">
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="nav-logo" href="index.html">Dr <span>Fajobi</span></a>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><i class="ti ti-menu-2"></i></button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="experience.html" data-nav="experience">Experience</a>
+      <a href="projects.html" data-nav="projects">Projects</a>
+      <a href="publications.html" data-nav="publications">Publications</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+    </div>
+  </nav>
 
-<!-- NAV — FIX 5: burger button added -->
-<nav class="nav">
-  <span class="nav-logo">My <span>Portfolio</span></span>
-  <div class="nav-links" id="navLinks">
-    <a href="#about" onclick="closeNav()">About</a>
-    <a href="#experience" onclick="closeNav()">Experience</a>
-    <a href="#projects" onclick="closeNav()">Projects</a>
-    <a href="#skills" onclick="closeNav()">Skills</a>
-    <a href="#education" onclick="closeNav()">Education</a>
-    <a href="#contact" onclick="closeNav()">Contact</a>
-  </div>
-  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
-</nav>
-
-<!-- HERO — FIX 2: hero-inner wrapper added -->
-<div class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-ukphr"><i class="ti ti-shield-check"></i> UKPHR Registered Public Health Practitioner</div>
-      <h1 class="hero-name">Dr Olusola<br><span>Fajobi</span></h1>
-      <p class="hero-creds">MBChB &nbsp;·&nbsp; MPH &nbsp;·&nbsp; FWACP</p>
-      <p class="hero-tagline">Public Health Intelligence Leader — bridging clinical medicine, epidemiology and modern data engineering to drive equitable population health outcomes.</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
-          <i class="ti ti-briefcase"></i> View my work
-        </button>
-        <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          <i class="ti ti-download"></i> Contact me
-        </button>
+  <header class="hero split-hero reveal">
+    <div class="hero-copy">
+      <p class="eyebrow"><i class="ti ti-shield-check"></i> UKPHR Registered Public Health Practitioner</p>
+      <h1>Dr Olusola <span>Fajobi</span></h1>
+      <p class="hero-creds">MBChB · MPH · FWACP</p>
+      <p class="hero-text">Public Health Intelligence Leader bridging clinical medicine, epidemiology and modern data engineering to drive equitable population health outcomes.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="projects.html"><i class="ti ti-briefcase"></i> View my work</a>
+        <a class="btn btn-secondary" href="contact.html"><i class="ti ti-send"></i> Contact me</a>
       </div>
     </div>
-    <div>
-      <div class="photo-wrap">
-        <img src="profile.jpg" alt="Dr Olusola Fajobi"/>
+    <div class="hero-media" aria-label="Portrait and impact metrics">
+      <div class="portrait-card"><img src="profile.jpg" alt="Dr Olusola Fajobi" /></div>
+      <div class="metric-strip">
+        <div><strong>1M+</strong><span>records analysed</span></div>
+        <div><strong>20</strong><span>ward dashboards</span></div>
+        <div><strong>19</strong><span>publications</span></div>
       </div>
     </div>
-  </div>
-</div>
+  </header>
 
-<div class="wrapper">
-
-  <section class="section" id="about">
-    <div class="sec-label">About</div>
-    <h2 class="sec-title">My story</h2>
-    <p class="sec-sub">A journey from the clinic to the command centre of population health intelligence</p>
-    <div class="story-grid">
-      <div class="story-card c1">
-        <div class="story-num">01</div>
-        <div class="story-heading">Clinician &amp; researcher</div>
-        <div class="story-body">Trained as a physician at Obafemi Awolowo University, I saw the chasm between patient data and clinical decisions — driving me into public health. I earned my MPH, MWACP and FWACP, publishing 19 peer-reviewed papers spanning COVID-19, reproductive health, FGM and NCDs.</div>
+  <main>
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>From clinical medicine to population health intelligence</h2>
+        <p>I combine domain expertise, analytical leadership and reproducible data systems to help organisations move from insight to action.</p>
       </div>
-      <div class="story-card c2">
-        <div class="story-num">02</div>
-        <div class="story-heading">Population health analyst</div>
-        <div class="story-body">As Senior Population Health Analyst at NHS Mid and South Essex ICB, I built analytical systems linking datasets of over one million pseudonymised records — using R, SQL and Power BI to surface health inequalities and inform commissioning decisions across the integrated care system.</div>
+      <div class="story-grid">
+        <article class="story-card accent-teal"><span>01</span><h3>Clinician & researcher</h3><p>Trained as a physician, then moved into public health through epidemiology, field research and peer-reviewed academic work.</p></article>
+        <article class="story-card accent-amber"><span>02</span><h3>Population health analyst</h3><p>Built analytical systems across large linked datasets to identify inequalities and support commissioning decisions.</p></article>
+        <article class="story-card accent-blue"><span>03</span><h3>Intelligence leader</h3><p>Now leading analytical teams, automated reporting, smart narrative dashboards and AI-supported public health intelligence.</p></article>
       </div>
-      <div class="story-card c3">
-        <div class="story-num">03</div>
-        <div class="story-heading">Intelligence leader</div>
-        <div class="story-body">Now leading the Public Health Intelligence function at Thurrock Council — managing a team of analysts, delivering automated dashboards with smart narration, ML risk stratification models, and reproducible analytical pipelines that directly shape public health strategy.</div>
+    </section>
+
+    <section class="section section-band reveal">
+      <div class="section-head compact">
+        <div><p class="eyebrow">Selected Work</p><h2>Evidence-led systems with practical impact</h2></div>
+        <a class="text-link" href="projects.html">Explore all projects <i class="ti ti-arrow-right"></i></a>
       </div>
-    </div>
-  </section>
+      <div class="projects-grid" id="featuredProjects"></div>
+    </section>
 
-  <section class="section" id="experience">
-    <div class="sec-label">Experience</div>
-    <h2 class="sec-title">Career timeline</h2>
-    <p class="sec-sub">Click any role to expand key projects, tools and outcomes</p>
-    <div class="timeline" id="timeline"></div>
-  </section>
-
-  <section class="section" id="projects">
-    <div class="sec-label">Work</div>
-    <h2 class="sec-title">Projects &amp; publications</h2>
-    <p class="sec-sub">Analytics, intelligence, research and public health — filterable by category</p>
-    <div class="filter-bar" id="filterBar"></div>
-    <div id="projectsContainer"></div>
-  </section>
-
-  <section class="section" id="skills">
-    <div class="sec-label">Expertise</div>
-    <h2 class="sec-title">Skills &amp; tools</h2>
-    <p class="sec-sub">Five pillars spanning clinical medicine to cloud data engineering</p>
-    <div class="skills-grid" id="skillsGrid"></div>
-  </section>
-
-  <section class="section" id="education">
-    <div class="sec-label">Credentials</div>
-    <h2 class="sec-title">Education &amp; certifications</h2>
-    <p class="sec-sub">Formal qualifications and continuing professional development</p>
-    <div class="edu-grid">
-      <div>
-        <div class="col-label">Formal education</div>
-        <div class="edu-list" id="eduList"></div>
+    <section class="section reveal">
+      <div class="section-head compact">
+        <div><p class="eyebrow">Career</p><h2>Current leadership and recent delivery</h2></div>
+        <a class="text-link" href="experience.html">View full timeline <i class="ti ti-arrow-right"></i></a>
       </div>
-      <div>
-        <div class="col-label">Certifications</div>
-        <div class="cert-list" id="certList"></div>
+      <div class="timeline preview" id="homeTimeline"></div>
+    </section>
+
+    <section class="section reveal">
+      <div class="vision-box">
+        <p class="eyebrow">Leadership Vision</p>
+        <blockquote>Good data alone does not improve health. It is the people who understand both the data and the communities it represents who drive real change.</blockquote>
+        <p>My approach is grounded in clinical understanding, analytical rigour and a commitment to translating evidence into action for populations historically underserved by health systems.</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="section">
-    <div class="sec-label">Philosophy</div>
-    <h2 class="sec-title">Leadership vision</h2>
-    <p class="sec-sub">What drives my approach to public health intelligence</p>
-    <div class="vision-box">
-      <div class="vision-mark">"</div>
-      <div class="vision-quote">Good data alone does not improve health. It is the people who understand both the data and the communities it represents who drive real change.</div>
-      <div class="vision-body">My career has been defined by a belief that clinical understanding and analytical rigour must work together. Having trained as a physician, conducted field research across Nigeria, and now leading intelligence systems that serve over a million people in Essex, I know that the most powerful insights sit at the intersection of domain expertise and technical capability. As a leader, I aim to build teams that are curious, reproducible in their methods, and relentless in translating evidence into action — particularly for populations historically underserved by health systems. The future of public health lies in AI-augmented intelligence: faster, fairer, and grounded in the communities it serves.</div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="sec-label">Connect</div>
-    <h2 class="sec-title">Get in touch</h2>
-    <p class="sec-sub">Open to leadership roles in public health intelligence, data engineering and AI in health</p>
-    <div class="contact-grid" id="contactGrid"></div>
-  </section>
-
-</div>
-
-<footer>Built by <span>Dr Olusola Fajobi</span> &nbsp;·&nbsp; Public Health Intelligence Leader</footer>
-
-<script>
-// ── NAV TOGGLE (FIX 5) ────────────────────────────
-function toggleNav(){
-  document.getElementById('navLinks').classList.toggle('open');
-}
-function closeNav(){
-  document.getElementById('navLinks').classList.remove('open');
-}
-
-// ── TIMELINE ──────────────────────────────────────
-const roles=[
-  {role:'Senior Public Health Intelligence Manager',org:'Thurrock Council',
-   date:'Nov 2022 – Present',active:true,
-   tools:['R','Power BI','SQL','Azure','Git','SystmOne'],
-   points:['Lead a team of five analysts delivering public health intelligence across Thurrock and MSE',
-     'Leading the development of 10 Public Health Situation report publications in 1 year',
-     'Built 20 automated ward profile dashboards with coded smart narrative',
-     'Developed API-enabled Thurrock Health Indicators Dashboard with ~10 parameters per indicator',
-     'Researched and published evidence for diabetes management in primary care',
-     'Achieved UKPHR registration 2025']},
-  {role:'Senior Population Health Management Analyst',org:'NHS Mid and South Essex ICB',
-   date:'Nov 2022 – Mar 2025',active:false,
-   tools:['R','SQL','Power BI','SystmOne','Azure','Fingertips'],
-   points:['Delivered DCL project analysing 1M+ pseudonymised records to surface health inequalities',
-     'Scoped and led CVD LES project across MSE — implemented and evaluated at scale',
-     'Designed Plus Group identification project for inclusion health populations',
-     'Linked datasets from multiple sources to support population health management',
-     'Collaborated with PCN digital leads, ICB health inequalities team and AGEM',
-     'Respiratory risk stratification using machine learning',
-     'Led cancer deep dive project feeding into MSE Cancer strategy']},
-  {role:'Public Health Specialist',org:'OAUTHC, Ile-Ife, Nigeria',
-   date:'Jun 2021 – Oct 2022',active:false,
-   tools:['SPSS','Stata','R','ODK'],
-   points:['Designed and conducted community health surveys on risk factors and health needs',
-     'Contributed to clinical trial design and data collection during COVID-19 pandemic',
-     'Published research on healthcare worker experiences during COVID-19',
-     'Mentored medical students and resident doctors in epidemiology and data analysis']},
-  {role:'Senior Registrar, Public Health Specialty',org:'OAUTHC, Ile-Ife, Nigeria',
-   date:'May 2016 – May 2021',active:false,
-   tools:['SPSS','Stata','ATLAS.ti','EpiData','R'],
-   points:['Facilitated research methodology clinic for resident doctors across OAUTHC',
-     'Conducted adolescent sexual and reproductive health study — basis of multiple publications',
-     'Provided consultancy for WHO, HACEY and AHEAD on large-scale surveys',
-     'Led public health campaign against FGM among secondary school adolescents in Imesi-Ile',
-     'Active surveillance of polio, malaria, cholera, TB, Lassa fever and COVID-19']},
-  {role:'Registrar, Public Health Specialty',org:'OAUTHC, Ile-Ife, Nigeria',
-   date:'Jan 2014 – May 2016',active:false,
-   tools:['SPSS','Stata','EpiData'],
-   points:['Rotated with WHO and state health departments on health surveys and planning',
-     'Developed data analytics and regression analysis skills on large population datasets',
-     'Led advocacy efforts to improve health-seeking behaviour in Imesi-Ile']}
-];
-const tl=document.getElementById('timeline');
-roles.forEach((r,i)=>{
-  const d=document.createElement('div');d.className='tl-item';
-  d.innerHTML=`<div class="tl-dot ${r.active?'':'inactive'}"></div>
-    <div class="tl-header ${r.active?'active':''}" onclick="toggleTl(${i})">
-      <div><div class="tl-role">${r.role}</div><div class="tl-org">${r.org}</div></div>
-      <div class="tl-date">${r.date}</div>
-    </div>
-    <div class="tl-expand ${r.active?'open':''}" id="tl-${i}">
-      <div class="tl-tools">${r.tools.map(t=>`<span class="tool-tag">${t}</span>`).join('')}</div>
-      <ul class="tl-points">${r.points.map(p=>`<li>${p}</li>`).join('')}</ul>
-    </div>`;
-  tl.appendChild(d);
-});
-function toggleTl(i){
-  const e=document.getElementById('tl-'+i),h=e.previousElementSibling;
-  e.classList.toggle('open');h.classList.toggle('active');
-}
-
-// ── PROJECTS ──────────────────────────────────────
-const catMap={phm:'cat-phm',hi:'cat-hi',phi:'cat-phi',ml:'cat-ml',ar:'cat-ar',ph:'cat-ph',de:'cat-de'};
-const catLabel={phm:'PHM',hi:'Health Inequality',phi:'Public Health Intelligence',
-  ml:'Machine Learning',ar:'Academic Research',ph:'Public Health',de:'Data Engineering'};
-const projects=[
-  {title:'Disproportionate Care Law',cat:'phm',
-   desc:'1M+ pseudonymised records analysed to identify disproportionate care patterns across Mid and South Essex.',
-   tools:['R','Power BI','SystmOne']},
-  {title:'Plus Group / Inclusion Health',cat:'hi',
-   desc:'Scoped and analysed inclusion health populations in MSE — presented to PHM steering group and approved.',
-   tools:['SQL','R','Azure']},
-  {title:'Cancer Deep Dive',cat:'phm',
-   desc:'Comprehensive MSE cancer metrics benchmarked against regional and national data to inform cancer strategy.',
-   tools:['R','Fingertips','NHS Digital']},
-  {title:'CVD LES — MSE Implementation',cat:'phm',
-   desc:'Scaled cardiovascular LES programme across MSE, improving eligible patient identification and evaluation dashboard.',
-   tools:['SystmOne','Excel','Power BI']},
-  {title:'Ward Profile Dashboard',cat:'phi',
-   desc:'20 interactive ward profiles with fully coded automated smart narrative — auto-updates on new data release.',
-   tools:['Power BI','R','IMD 2025']},
-  {title:'Thurrock Health Indicators Dashboard',cat:'phi',
-   desc:'API-automated dashboard with ~10 visual parameters per indicator, saving significant manual lookup time.',
-   tools:['Power BI','API','Excel Macros']},
-  {title:'Respiratory Risk Stratification',cat:'ml',
-   desc:'Applied ML to identify high-risk respiratory patients for intervention — now adopted across MSE PCNs.',
-   tools:['R','Machine Learning','AGEM data']},
-  {title:'ETL Pipeline Portfolio',cat:'de',
-   desc:'GitHub repos: pos2etl, posetl, shetl, airflow_project — transaction ingestion, Airflow orchestration, automated pipelines.',
-   tools:['Python','Apache Airflow','SQL']},
-  {title:'FGM Campaign — Imesi-Ile',cat:'ph',
-   desc:'Led public health campaign against FGM among secondary school adolescents in rural Osun State, Nigeria.',
-   tools:['Community engagement','Advocacy','Survey']},
-  {title:'COVID-19 Community Response',cat:'ph',
-   desc:'Community mobilisation, surveillance and training of 500+ health workers in Osun State during COVID-19.',
-   tools:['IDSR','ODK','EOC collaboration']}
-];
-const featuredPubs=[
-  {title:'Association between serum vitamins and COVID-19 infection: cross-sectional study of healthcare workers',
-   journal:'BMC Infectious Diseases',year:2026,first:false},
-  {title:'Social media engagement and risky sexual behaviours among out-of-school adolescents in Ile-Ife',
-   journal:'Vulnerable Children and Youth Studies',year:2025,first:true},
-  {title:'Preferences and Motivations for Choice of Sexual and Reproductive Health Service Providers among In-School Adolescents',
-   journal:'Texila International Journal of Public Health',year:2025,first:false},
-  {title:'COVID-19-related stress, anxiety and vaccine hesitancy among healthcare workers in South-Western Nigeria',
-   journal:'Scientific Reports',year:2025,first:false},
-  {title:'Girls at risk: FGM intentions among in-school adolescents of a rural community in Osun State',
-   journal:'European Journal of Contraception and Reproductive Health Care',year:2022,first:true},
-  {title:'The Factor(s) Influencing Male Involvement in Family Planning — Rural South West Nigeria',
-   journal:'Central African Journal of Public Health',year:2021,first:true},
-  {title:'Community perception and determinants of willingness to uptake COVID-19 vaccines — Osun State',
-   journal:'International Journal of Community Medicine and Public Health',year:2021,first:false},
-  {title:'Application of quantitative techniques in decision making by healthcare managers in Nigerian tertiary institutions',
-   journal:'Health Services Management Research',year:2016,first:true}
-];
-const filters=[
-  {key:'all',label:'All'},{key:'phm',label:'PHM'},
-  {key:'hi',label:'Health Inequalities'},{key:'phi',label:'Public Health Intelligence'},
-  {key:'ml',label:'Machine Learning'},{key:'de',label:'Data Engineering'},
-  {key:'ph',label:'Public Health'},{key:'ar',label:'Academic Research'}
-];
-let active='all';
-const fb=document.getElementById('filterBar');
-filters.forEach(f=>{
-  const b=document.createElement('button');
-  b.className='filter-btn'+(f.key==='all'?' active':'');
-  b.textContent=f.label;
-  b.onclick=()=>{active=f.key;
-    document.querySelectorAll('#filterBar .filter-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');renderProjects();};
-  fb.appendChild(b);
-});
-function renderProjects(){
-  const c=document.getElementById('projectsContainer');c.innerHTML='';
-  const showAR=active==='all'||active==='ar';
-  const showProj=active==='all'||active!=='ar';
-  if(showProj){
-    const filtered=projects.filter(p=>active==='all'||p.cat===active);
-    if(filtered.length){
-      const g=document.createElement('div');g.className='projects-grid';
-      g.style.marginBottom=showAR?'1.5rem':'0';
-      filtered.forEach(p=>{
-        const card=document.createElement('div');card.className='proj-card';
-        card.innerHTML=`<span class="proj-cat ${catMap[p.cat]}">${catLabel[p.cat]}</span>
-          <div class="proj-title">${p.title}</div>
-          <div class="proj-desc">${p.desc}</div>
-          <div class="proj-tools">${p.tools.map(t=>`<span class="proj-tool">${t}</span>`).join('')}</div>`;
-        g.appendChild(card);});
-      c.appendChild(g);}}
-  if(showAR){
-    const sep=document.createElement('div');sep.className='ar-divider';
-    sep.innerHTML=`<span>Academic Research</span><hr>
-      <a href="https://www.researchgate.net/profile/Olusola-Fajobi" target="_blank">ResearchGate ↗</a>`;
-    c.appendChild(sep);
-    const ach=document.createElement('div');ach.className='pub-achieve';
-    [{n:'19',l:'Publications'},{n:'76',l:'Citations'},{n:'5',l:'h-index'},{n:'10yrs',l:'Active'}].forEach(s=>{
-      const ac=document.createElement('div');ac.className='pub-achieve-card';
-      ac.innerHTML=`<div class="pub-ach-num">${s.n}</div><div class="pub-ach-label">${s.l}</div>`;
-      ach.appendChild(ac);});
-    c.appendChild(ach);
-    const pg=document.createElement('div');pg.className='pub-cards';
-    featuredPubs.forEach(p=>{
-      const card=document.createElement('div');card.className='pub-card';
-      card.innerHTML=`<div class="pub-card-title">${p.title}
-        ${p.first?'<span class="pub-first-badge">First author</span>':''}</div>
-        <div class="pub-card-meta">
-          <span class="pub-card-journal">${p.journal}</span> · ${p.year}</div>`;
-      pg.appendChild(card);});
-    c.appendChild(pg);
-    const va=document.createElement('div');va.className='pub-view-all';
-    va.innerHTML=`<a href="https://www.researchgate.net/profile/Olusola-Fajobi" target="_blank">
-      View all 19 publications on ResearchGate ↗</a>`;
-    c.appendChild(va);}
-}
-renderProjects();
-
-// ── SKILLS ────────────────────────────────────────
-const skills=[
-  {icon:'ti-stethoscope',name:'Clinical & public health',
-   tags:['Medicine','Epidemiology','Biostatistics','PHM','Health inequalities','Disease surveillance','IPC']},
-  {icon:'ti-chart-histogram',name:'Statistical analysis',
-   tags:['R','Python','Stata','SPSS','Logistic regression','ML algorithms','Time series']},
-  {icon:'ti-database',name:'Data engineering',
-   tags:['SQL','ETL pipelines','Apache Airflow','Azure','Git','Automated workflows','APIs']},
-  {icon:'ti-presentation-analytics',name:'Visualisation & BI',
-   tags:['Power BI','Shiny','Excel','Dashboard design','Smart narration','ATLAS.ti']},
-  {icon:'ti-users',name:'Leadership & strategy',
-   tags:['Team management','Commissioning intel','Stakeholder engagement','UKPHR','Project management','M&E']}
-];
-const sg=document.getElementById('skillsGrid');
-skills.forEach(s=>{
-  const el=document.createElement('div');el.className='skill-pillar';
-  el.innerHTML=`<i class="ti ${s.icon} skill-icon"></i>
-    <div class="skill-pillar-name">${s.name}</div>
-    <div class="skill-tags">${s.tags.map(t=>`<span class="skill-tag">${t}</span>`).join('')}</div>`;
-  sg.appendChild(el);});
-
-// ── EDUCATION ─────────────────────────────────────
-const edu=[
-  {year:'2025',degree:'UKPHR Registration',inst:'UK Public Health Register'},
-  {year:'2021',degree:'FWACP — Public Health Medicine',inst:'West African College of Physicians'},
-  {year:'2019',degree:'MPH — Epidemiology & Biostatistics',inst:'Obafemi Awolowo University'},
-  {year:'2016',degree:'MWACP — Public Health',inst:'West African College of Physicians'},
-  {year:'2008',degree:'MBChB — Medicine & Surgery',inst:'Obafemi Awolowo University'}
-];
-const eduEl=document.getElementById('eduList');
-edu.forEach(e=>{
-  const item=document.createElement('div');item.className='edu-item';
-  item.innerHTML=`<div class="edu-year">${e.year}</div>
-    <div><div class="edu-degree">${e.degree}</div>
-    <div class="edu-inst">${e.inst}</div></div>`;
-  eduEl.appendChild(item);});
-
-const certs=[
-  {name:'Microsoft Azure AI Fundamentals',issuer:'Microsoft · Mar 2024',
-   url:'https://learn.microsoft.com/en-us/users/olusolafajobi-3251/credentials/certification/azure-ai-fundamentals'},
-  {name:'Microsoft Azure Fundamentals',issuer:'Microsoft · Dec 2023',
-   url:'https://learn.microsoft.com/en-gb/users/olusolafajobi-3251/credentials/certification/azure-fundamentals'},
-  {name:'Google Data Analytics Certificate',issuer:'Coursera · Dec 2022',
-   url:'https://www.credly.com/badges/9c1a8c05-63c0-46fb-acff-a1422f40c48f'},
-  {name:'Machine Learning with Python',issuer:'Cognitive Class · Dec 2021',
-   url:'https://courses.cognitiveclass.ai/certificates/b9690e7e48784f7191ebc8a0cbb81db0'},
-  {name:'Data Analysis with Python',issuer:'Cognitive Class · Nov 2021',
-   url:'https://courses.cognitiveclass.ai/certificates/4f081d796f0a4984bcb5a1dc36db3dee'},
-  {name:'Implementation Science in Public Health',issuer:'ISGlobal Barcelona · Apr 2022',url:''},
-  {name:'Time Series Analysis — Digital Technologies',issuer:'ISGlobal Barcelona · Apr 2022',url:''},
-  {name:'Project Management in Global Health',issuer:'University of Washington · 2019',url:''},
-  {name:'Leadership & Management in Health',issuer:'University of Washington · 2016',url:''},
-  {name:'ATLAS.ti Certified Trainer',issuer:'2020',url:''},
-  {name:'GIS & Remote Sensing in Public Health',issuer:'2018',url:''},
-  {name:'M&E of Public Health Programs',issuer:'OAU IPH · 2017',url:''},
-  {name:'Health Research Ethics (CITI)',issuer:'CITI Program · May 2021',
-   url:'https://www.citiprogram.org/verify/?w7a6626f8-c07d-4345-95b0-81bb4f353fa4-38518608'},
-  {name:'SQL',issuer:'Sololearn',
-   url:'https://www.sololearn.com/Certificate/1060-19142275/pdf/'}
-];
-const cl=document.getElementById('certList');
-certs.forEach(c=>{
-  const a=document.createElement('a');a.className='cert-item';
-  a.href=c.url||'#';a.target=c.url?'_blank':'';
-  if(!c.url)a.style.cursor='default';
-  a.innerHTML=`<i class="ti ti-certificate" style="font-size:15px;color:var(--teal);flex-shrink:0"></i>
-    <div><div class="cert-name">${c.name}</div>
-    <div class="cert-issuer">${c.issuer}</div></div>`;
-  cl.appendChild(a);});
-
-// ── CONTACT ───────────────────────────────────────
-const contacts=[
-  {icon:'ti-mail',label:'Email',sub:'sholex111@gmail.com',url:'mailto:sholex111@gmail.com'},
-  {icon:'ti-brand-linkedin',label:'LinkedIn',sub:'olusola-fajobi',
-   url:'https://www.linkedin.com/in/olusola-fajobi-a189a612'},
-  {icon:'ti-brand-github',label:'GitHub',sub:'sholex111',url:'https://github.com/sholex111'},
-  {icon:'ti-article',label:'ResearchGate',sub:'Olusola-Fajobi',
-   url:'https://www.researchgate.net/profile/Olusola-Fajobi'},
-  {icon:'ti-brand-kaggle',label:'Kaggle',sub:'solafajobi',url:'https://www.kaggle.com/solafajobi'}
-];
-const cg=document.getElementById('contactGrid');
-contacts.forEach(c=>{
-  const a=document.createElement('a');a.className='contact-link';
-  a.href=c.url;a.target='_blank';
-  a.innerHTML=`<i class="ti ${c.icon}"></i>
-    <div><div>${c.label}</div><div class="contact-sub">${c.sub}</div></div>`;
-  cg.appendChild(a);});
-</script>
+  <footer class="footer"><span>Built by Dr Olusola Fajobi</span><a href="contact.html">Get in touch</a></footer>
+  <script src="site.js"></script>
 </body>
 </html>
